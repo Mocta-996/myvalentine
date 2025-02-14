@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi Valentín?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ... [Estilos anteriores permanecen iguales hasta los estilos de las flores] ... */
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            /*background-color: #ffd6e0;*/
+            background-color: #e08d9a;
+            font-family: Arial, sans-serif;
+            touch-action: manipulation;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            margin: 1rem;
+            max-width: 90vw;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                90deg,
+                #ff4d6d 0%,
+                #ff758c 20%,
+                #ff8fa3 40%,
+                #ff758c 60%,
+                #ff4d6d 80%,
+                #ff4d6d 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        button {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            margin: 0.5rem;
+        }
+        #siBtn {
+            background-color: #1fbba3;
+            color: white;
+        }
+        #noBtn {
+            background-color: #e74c3c;
+            color: white;
+            position: relative;
+        }
+        #siBtn:hover, #siBtn:active {
+            transform: scale(1.1);
+            background-color: #1fbba3;
+        }
+        .heart {
+            font-size: 150px;
+            color: #ff4d6d;
+            animation: pulse 1s infinite;
+            position: relative;
+            z-index: 2;
+        }
+        p {
+            font-size: 1.8rem;
+            color: #ff4d6d;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(
+                90deg,
+                #ff4d6d 0%,
+                #ff758c 20%,
+                #ff8fa3 40%,
+                #ff758c 60%,
+                #ff4d6d 80%,
+                #ff4d6d 100%
+            );
+            background-size: 200% auto;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: shine 3s linear infinite;
+        }
+
+        /* Nuevos estilos para los girasoles */
+        .sunflower {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .sunflower .center {
+            width: 60px;
+            height: 60px;
+            background: #654321;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.3);
+        }
+        .sunflower .center::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle, #8B4513 30%, #654321 70%);
+        }
+        .sunflower .petals {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        .sunflower .petal {
+            position: absolute;
+            width: 70px;
+            height: 25px;
+            background: #FFD700;
+            border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            transform-origin: 0 50%;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+        .gif-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto 20px auto;
+        }
+    
+        .response-gif {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+            }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            button {
+                padding: 15px 30px;
+                font-size: 1.5rem;
+            }
+            .container { padding: 1.5rem; }
+            p { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="pregunta">
+        <div class="gif-container">
+            <img src="./gifs/gif1.gif" alt="Love GIF" class="response-gif" id="gif">
+        </div>
+        <h1> Ligia Liduvina Cruz Tautiu Bocel ❤️</h1>
+        <p>¿Quieres ser mi Valentín? </p>
+        <div class="buttons">
+            <button id="siBtn">Sí</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="respuestaSi">
+        <div class="gif-container">
+            <img src="./gifs/peach-goma-love.gif" alt="Love GIF" class="response-gif">
+        </div>
+        <h1>¡Sabía que dirías que sí!</h1>
+        <p>Eres lo mejor que me ha pasado 💕</p>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const gifImg = document.getElementById("gif");
+        let noCount = 0;
+        const noBtnTexts = [
+            "¿Estás segura?",
+            "¿Lo has pensado bien?",
+            "¡Última oportunidad!",
+            "¿Segura que no? 🥺",
+            "¡Me vas a hacer llorar!",
+            "¡Piénsalo otra vez!"
+        ];
+
+        const gifSources = [
+            "./gifs/gif1.gif",
+            "./gifs/gif2.gif",
+            "./gifs/gif3.gif",
+            "./gifs/gif4.gif",
+            "./gifs/gif5.gif",
+            "./gifs/gif6.gif",
+        ];
+
+        function createSunflower() {
+            const sunflower = document.createElement('div');
+            sunflower.className = 'sunflower';
+            
+            // Centro del girasol
+            const center = document.createElement('div');
+            center.className = 'center';
+            sunflower.appendChild(center);
+            
+            // Contenedor de pétalos
+            const petalsContainer = document.createElement('div');
+            petalsContainer.className = 'petals';
+            
+            // Crear 24 pétalos para un girasol más realista
+            for (let i = 0; i < 24; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.transform = `rotate(${i * 15}deg) translateX(30px)`;
+                // Variar ligeramente el color de los pétalos
+                const hue = 45 + Math.random() * 10; // Tonos de amarillo
+                petal.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
+                petalsContainer.appendChild(petal);
+            }
+            
+            sunflower.appendChild(petalsContainer);
+            
+            // Posición inicial aleatoria
+            const randomX = Math.random() * window.innerWidth;
+            sunflower.style.left = `${randomX}px`;
+            sunflower.style.bottom = '-100px';
+            
+            // Tamaño aleatorio pero manteniendo el girasol grande
+            const scale = 0.8 + Math.random() * 0.4;
+            sunflower.style.transform = `scale(${scale})`;
+            
+            // Animación
+            const duration = 8 + Math.random() * 7;
+            sunflower.style.animation = `float ${duration}s linear infinite`;
+            
+            document.body.appendChild(sunflower);
+            
+            // Eliminar el girasol después de que termine la animación
+            setTimeout(() => {
+                sunflower.remove();
+            }, duration * 1000);
+        }
+
+        function startSunflowerAnimation() {
+            // Crear girasoles iniciales
+            for (let i = 0; i < 7; i++) {
+                createSunflower();
+            }
+            
+            // Continuar creando girasoles
+            setInterval(createSunflower, 2000);
+        }
+
+        function moveButton(event) {
+            event.preventDefault();
+            
+            const safeWidth = window.innerWidth - noBtn.offsetWidth - 20;
+            const safeHeight = window.innerHeight - noBtn.offsetHeight - 20;
+            
+            const randomX = Math.max(20, Math.random() * safeWidth);
+            const randomY = Math.max(20, Math.random() * safeHeight);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+            
+            if (noCount < noBtnTexts.length) {
+                noBtn.textContent = noBtnTexts[noCount];
+                gifImg.src = gifSources[noCount];
+                noCount++;
+            }
+            
+            const currentSize = parseFloat(window.getComputedStyle(siBtn).fontSize);
+            siBtn.style.fontSize = (currentSize + 1) + 'px';
+        }
+
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+        noBtn.addEventListener('touchend', (e) => e.preventDefault());
+
+        function handleSiClick(event) {
+            event.preventDefault();
+            pregunta.classList.add('hidden');
+            respuestaSi.classList.remove('hidden');
+            startSunflowerAnimation();
+        }
+
+        siBtn.addEventListener('click', handleSiClick);
+        siBtn.addEventListener('touchend', handleSiClick);
+    </script>
+</body>
+</html>
